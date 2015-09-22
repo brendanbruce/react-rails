@@ -1,11 +1,17 @@
 DOM = React.DOM
 
-FormInputWithLabel = React.createClass
+@FormInputWithLabel = React.createClass
   displayName: "FormInputWithLabel"
 
   getDefaultProps: ->
     elementType: "input"
     inputType: "text"
+
+  tagType: ->
+    {
+      "input": @props.inputType,
+      "textarea": null
+    }[@props.elementType]
 
   render: ->
     DOM.div
@@ -24,22 +30,21 @@ FormInputWithLabel = React.createClass
           value: @props.value
           onChange: @props.onChange
 
-  tagType: ->
-    {
-      "input": @props.inputType,
-      "textarea": null
-    }[@props.elementType]
 
 formInputWithLabel = React.createFactory(FormInputWithLabel)
 
-CreateNewMeetupForm = React.createClass
+@CreateNewMeetupForm = React.createClass
   displayName: "CreateNewMeetupForm"
 
   getInitialState: ->
     {
       title: ""
       description: ""
+      date: new Date()
     }
+
+  dateChange: (newDate) ->
+    @setState(date: newDate)
 
   fieldChanged: (fieldName, event) ->
     stateUpdate = {}
@@ -81,6 +86,10 @@ CreateNewMeetupForm = React.createClass
           placeholder: "Meetup description"
           labelText: "Description"
           elementType: "textarea"
+
+        dateWithLabel
+          onChange: @dateChanged
+          date: @state.date
 
         DOM.div
           className: "form-group"
