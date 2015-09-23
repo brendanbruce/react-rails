@@ -1,4 +1,4 @@
-DOM = React.DOM
+window.DOM = React.DOM
 
 @FormInputWithLabel = React.createClass
   displayName: "FormInputWithLabel"
@@ -87,7 +87,7 @@ formInputWithLabel = React.createFactory(FormInputWithLabel)
           labelText: "Description"
           elementType: "textarea"
 
-        dateWithLabel
+        window.dateWithLabel
           onChange: @dateChanged
           date: @state.date
 

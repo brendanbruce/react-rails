@@ -1,4 +1,4 @@
-@DateWithLabel = React.createClass
+DateWithLabel = React.createClass
   getDefaultProps: ->
     date: new Date()
   onYearChange: (event) ->
@@ -21,4 +21,4 @@
           value: @props.date.getFullYear()
           DOM.option(value: year, key: year, year) for year in [2015..2020]
 
-dateWithLabel = React.createFactory(DateWithLabel)
+window.dateWithLabel = React.createFactory(DateWithLabel)
