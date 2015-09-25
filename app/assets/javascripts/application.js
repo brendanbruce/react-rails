@@ -3,5 +3,5 @@
 //= require turbolinks
 //= require react
 //= require react_ujs
-//= require_tree ./components
+//= require classnames.js
 //= require_tree .
